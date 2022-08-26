@@ -9,6 +9,7 @@
     <module>cloud-provider-payment8001</module>
       <module>cloud-consumer-order80</module>
       <module>cloud-api-commons</module>
+      <module>cloud-eureka-server7001</module>
   </modules>
   <packaging>pom</packaging>
 
@@ -27,6 +28,7 @@
     <mysql.version>8.0.29</mysql.version>
     <druid.version>1.2.8</druid.version>
     <mybatis.spring.boot.version>2.2.2</mybatis.spring.boot.version>
+    <spring-cloud.version>2021.0.3</spring-cloud.version>
   </properties>
 
   <!-- 1、只是声明依赖，并不实际引入，子项目按需声明使用的依赖 -->
@@ -34,6 +36,14 @@
   <!-- 3、子项目若指定了 version 和 scope，以子项目为准 -->
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
       <!--spring boot 2.2.2-->
       <dependency>
         <groupId>org.springframework.boot</groupId>
