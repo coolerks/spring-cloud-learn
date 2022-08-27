@@ -1,8 +1,8 @@
 package com.xiaoxu.cloud.controller;
 
+import com.xiaoxu.cloud.service.PaymentService;
 import com.xiaoxu.api.bean.Payment;
 import com.xiaoxu.api.bean.Result;
-import com.xiaoxu.cloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -17,14 +17,15 @@ public class PaymentController {
     @Value("${server.port}")
     private int port;
 
+
     @PostMapping("/")
     public Result<Integer> insert(@RequestBody Payment payment) {
         int result = service.insertPayment(payment);
         log.info("插入数据：{}, 结果：{}", payment, result);
         if (result > 0) {
-            return new Result<>(200, "添加成功" + port, result);
+            return new Result<>(200, "添加成功", result);
         }
-        return new Result<>(400, "添加失败" + port);
+        return new Result<>(400, "添加失败");
 
     }
 
