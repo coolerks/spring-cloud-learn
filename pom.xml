@@ -15,6 +15,7 @@
     <module>consul-provider-payment-8006</module>
     <module>consul-consumer-payment-80</module>
     <module>consul-provider-payment-8007</module>
+    <module>cloud-consumer-open-feign80</module>
   </modules>
   <packaging>pom</packaging>
 

@@ -51,6 +51,12 @@ public class PaymentController {
         return new Result<>(400, "删除失败");
     }
 
+    @GetMapping("/timeout/{time}")
+    public String timeout(@PathVariable Integer time) throws InterruptedException {
+        Thread.sleep(time * 1000);
+        return "超时" + time + "秒数";
+    }
+
     public PaymentController(PaymentService service) {
         this.service = service;
     }
