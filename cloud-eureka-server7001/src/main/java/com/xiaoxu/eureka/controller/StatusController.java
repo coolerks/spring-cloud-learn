@@ -9,14 +9,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 
 @RestController
-@RequestMapping("/status")
+@RequestMapping("/get")
 @Slf4j
 public class StatusController {
     @Autowired
     DiscoveryClient discoveryClient;
+
+    @GetMapping("/")
+    public String ip(HttpServletRequest request) {
+        log.info("info = {}", request.getRemoteHost());
+        return "访问成功";
+    }
 
     @GetMapping("/service")
     public List<String> getDiscoveryService() {
