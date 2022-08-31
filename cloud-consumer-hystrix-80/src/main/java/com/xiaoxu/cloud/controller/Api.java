@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Service
-@FeignClient("CLOUD-PROVIDER-HYSTRIX8001")
+@FeignClient(value = "CLOUD-PROVIDER-HYSTRIX8001", fallback = ApiHandler.class)
 public interface Api {
     @GetMapping("/hystrix/normal")
     String normal();
