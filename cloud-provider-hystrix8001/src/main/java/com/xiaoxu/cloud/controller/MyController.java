@@ -7,7 +7,7 @@ import com.netflix.hystrix.contrib.javanica.conf.HystrixPropertiesManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Random;
+import java.util.*;
 
 @RestController
 @RequestMapping("/hystrix")
@@ -62,4 +62,56 @@ public class MyController {
         return "这是默认的处理错误的兜底方法";
     }
 
+}
+
+class Solution {
+
+
+    public List<List<Integer>> getRest(int[] nums, int low, int val) {
+        int high = nums.length - 1;
+        List<List<Integer>> list = new ArrayList<>();
+        while (low < high) {
+
+            int re = val + nums[low] + nums[high];
+            if (re == 0) {
+                list.add(Arrays.asList(val, nums[low], nums[high]));
+                low++;
+                high--;
+
+                while (low < high && nums[low] == nums[low - 1]) {
+                    low++;
+                }
+
+                while (low < high && nums[high] == nums[high + 1]) {
+                    high--;
+                }
+            } else if (re > 0) {
+                high--;
+            } else {
+                low++;
+            }
+        }
+        return list;
+    }
+
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> list = new ArrayList<>();
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length; i++) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            List<List<Integer>> rest = getRest(nums, i + 1, nums[i]);
+            if (rest != null) {
+                list.addAll(rest);
+            }
+        }
+        return list;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {-4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0};
+//        int[] nums = {-4, -1, -1, 0, 1, 2};
+        System.out.println("new Solution().threeSum(nums) = " + new Solution().threeSum(nums));
+    }
 }
