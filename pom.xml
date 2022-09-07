@@ -19,7 +19,9 @@
         <module>cloud-provider-hystrix8001</module>
         <module>cloud-consumer-hystrix-80</module>
         <module>cloud-gateway-gateway5927</module>
+        <module>cloud-config-6677</module>
         <module>cloud-config-client3355</module>
+        <module>cloud-config-client3366</module>
     </modules>
     <packaging>pom</packaging>
 
