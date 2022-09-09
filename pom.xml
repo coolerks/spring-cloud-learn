@@ -24,6 +24,10 @@
         <module>cloud-config-client3366</module>
         <module>cloud-stream-producer8801</module>
         <module>cloud-stream-consumer8802</module>
+        <module>cloud-alibaba-provider-payment9001</module>
+        <module>cloud-alibaba-provider-payment9001</module>
+        <module>cloud-alibaba-provider-payment9002</module>
+        <module>cloud-alibaba-consumer-payment83</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -54,6 +58,14 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>2.2.8.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
