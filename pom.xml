@@ -22,6 +22,8 @@
         <module>cloud-config-6677</module>
         <module>cloud-config-client3355</module>
         <module>cloud-config-client3366</module>
+        <module>cloud-stream-producer8801</module>
+        <module>cloud-stream-consumer8802</module>
     </modules>
     <packaging>pom</packaging>
 
