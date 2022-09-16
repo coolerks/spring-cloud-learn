@@ -1,0 +1,32 @@
+server:
+  port: 9003
+spring:
+  application:
+    name: cloud-alibaba-payment
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+      config:
+        server-addr: localhost:8848
+        file-extension: yml
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+        port: 8719
+      datasource:
+        ds1:
+          nacos:
+            server-addr: localhost:8848
+            dataId: cloud-alibaba-sentinel-payment
+            groupId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

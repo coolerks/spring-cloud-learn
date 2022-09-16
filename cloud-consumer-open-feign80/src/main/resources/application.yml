@@ -1,0 +1,23 @@
+server:
+  port: 80
+spring:
+  application:
+    name: cloud-consumer-open-feign80
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka,http://localhost:7002/eureka
+feign:
+  client:
+    config:
+      default:
+        ConnectTimeOut: 5000
+        ReadTimeOut: 5000
+        logger-level: full
+logging:
+  level:
+    com.xiaoxu.cloud.feign.controller.MyFeign: debug

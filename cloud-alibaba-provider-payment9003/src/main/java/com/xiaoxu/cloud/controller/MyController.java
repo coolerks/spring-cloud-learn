@@ -2,6 +2,7 @@ package com.xiaoxu.cloud.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.xiaoxu.cloud.handler.MyBlockHandler;
+import com.xiaoxu.cloud.handler.MyExceptionFallback;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -27,8 +28,11 @@ public class MyController {
     }
 
     @GetMapping("/{index}")
-    @SentinelResource(value = "index", blockHandlerClass = MyBlockHandler.class, blockHandler = "itemHandler")
+    @SentinelResource(value = "index", blockHandlerClass = MyBlockHandler.class, blockHandler = "itemHandler",
+            fallbackClass = MyExceptionFallback.class, fallback = "itemExceptionFallback")
     public String getItem(@PathVariable Integer index) {
         return list.get(index) + " - 服务器1";
     }
+
+
 }

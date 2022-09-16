@@ -1,0 +1,16 @@
+server:
+  port: 3377
+spring:
+  profiles:
+    active: test
+  application:
+    name: cloud-alibaba-nacos-config
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+      config:
+        server-addr: localhost:8848
+        file-extension: yml
+        group: FIRST_GROUP
+        namespace: BEIJING_SERVER

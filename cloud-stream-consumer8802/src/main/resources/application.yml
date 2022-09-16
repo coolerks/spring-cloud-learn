@@ -1,0 +1,20 @@
+server:
+  port: 8802
+spring:
+  application:
+    name: cloud-stream-consumer8802
+  rabbitmq:
+    username: guest
+    password: guest
+    port: 5672
+
+eureka:
+  instance:
+    hostname: localhost
+    instance-id: cloud-stream-consumer8802
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka,http://localhost:7002/eureka

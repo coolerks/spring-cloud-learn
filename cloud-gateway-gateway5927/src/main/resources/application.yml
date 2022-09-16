@@ -1,0 +1,37 @@
+server:
+  port: 5927
+spring:
+  application:
+    name: cloud-gateway-gateway5927
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: normal
+          uri: lb://CLOUD-PROVIDER-HYSTRIX8001
+          predicates:
+            - Path=/hystrix/normal
+        - id: abnormal
+          uri: lb://CLOUD-PROVIDER-HYSTRIX8001
+          predicates:
+            - Path=/hystrix/abnormal/**
+        - id: break
+          uri: lb://CLOUD-PROVIDER-HYSTRIX8001
+          predicates:
+            - Path=/hystrix/break/**
+        - id: en
+          uri: http://en.integer.top
+          predicates:
+            - Path=/en/**
+eureka:
+  instance:
+    hostname: localhost
+    instance-id: cloud-gateway-gateway5927
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka,http://localhost:7002/eureka

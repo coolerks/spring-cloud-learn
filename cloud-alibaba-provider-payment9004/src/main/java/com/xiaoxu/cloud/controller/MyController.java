@@ -27,8 +27,13 @@ public class MyController {
     }
 
     @GetMapping("/{index}")
-    @SentinelResource(value = "index", blockHandlerClass = MyBlockHandler.class, blockHandler = "itemHandler")
+    @SentinelResource(value = "index", blockHandlerClass = MyBlockHandler.class, blockHandler = "itemHandler",
+            fallback = "itemExceptionFallback")
     public String getItem(@PathVariable Integer index) {
         return list.get(index) + " - 服务器2";
+    }
+
+    public String itemExceptionFallback(Integer index, Throwable e) {
+        return "抛异常了，服务器2，index = " + index + ", 异常为：" + e;
     }
 }

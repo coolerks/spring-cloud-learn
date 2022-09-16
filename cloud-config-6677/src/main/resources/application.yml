@@ -1,0 +1,31 @@
+server:
+  port: 6677
+spring:
+  application:
+    name: cloud-config3344
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/coolerks/config.git
+          search-paths: my-config
+  rabbitmq:
+    addresses: localhost
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  instance:
+    hostname: localhost
+    instance-id: cloud-config3344
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka,http://localhost:7002/eureka
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh"
